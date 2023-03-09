@@ -1,0 +1,64 @@
+ {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+  %}
+
+
+
+  <!Doctype Html>  
+  <Html>    
+  <Head>       
+  <style>  
+  body  
+  {  
+  background-image:url("");  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  }  
+  </style>  
+  </Head>  
+  <Body>     
+  </Body>  
+  </Html>  
+
+  <h1 align="center">Code </h1><br>
+ 
+  <iframe
+    frameBorder="0"
+    height="600px"  src="https://onecompiler.com/embed/" 
+    width="100%">
+  </iframe>
+  <form method="POST" enctype="multipart/form-data">
+    <textarea type="text" name="title" rows="4" cols="100">Enter here and submit it..!</textarea>
+    
+    <br>
+    <div style='text-align: center;'><br>
+      
+      <button  type="submit" class="btn btn-primary">SUBMIT</button>
+    </div>
+  </form><br>
+
+
+  <ul class="list-group list-group-flush" id="notes">
+    {% if user.notes  %}
+    <table id="Publications" class="table table-striped table-bordered">
+    <tr>
+      <th>Title</th>
+    </tr>
+    {% for note in user.notes %}
+    <tr>
+      <td>{{ note.title }}</td>
+      <td><button type="button" class="close" onClick="deleteNote( {{ note.id }}  )">
+        <span aria-hidden="true">&times;</span>
+      </button></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  
+    {% else %}
+    <p>No inputs created yet...</p>
+    {% endif %}
+  </ul><br>
+  <br>
+
+  {% endblock %}
